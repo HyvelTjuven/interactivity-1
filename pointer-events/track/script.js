@@ -38,13 +38,8 @@ function onPointerMove(evt) {
 
   // Position the element from its middle
   let rect = el.getBoundingClientRect();
-<<<<<<< HEAD
   el.style.left = (evt.clientX - rect.width / 2) + "px";
   el.style.top = (evt.clientY - rect.height / 2) + "px";
-=======
-  el.style.left = (evt.clientX-rect.width/2) + 'px';
-  el.style.top = (evt.clientY-rect.height/2) + 'px';
->>>>>>> c6fed3c8bb3b7834aae5e2d3931d16422142afd1
 }
 
 // Returns an existing element for a pointer id, or makes a new one
