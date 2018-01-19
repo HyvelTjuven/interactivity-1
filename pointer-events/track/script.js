@@ -2,8 +2,8 @@ function onDocumentReady() {
   let el = document.body;
 
   el.addEventListener('pointerup', onPointerUp);
-  el.addEventListener('pointerdown', onPointerDown);
   el.addEventListener('pointermove', onPointerMove);
+  el.addEventListener('pointerdown', onPointerDown);
   el.addEventListener('pointerleave', onPointerLeave);
 }
 
@@ -21,6 +21,8 @@ function onPointerDown(evt) {
   let rect = el.getBoundingClientRect();
   el.style.left = (evt.clientX - rect.width / 2) + "px";
   el.style.top = (evt.clientY - rect.height / 2) + "px";
+  console.log(rect);
+  
 
   // Log ID and location of pointer
   console.log(el.id + " down, " + "X: " + el.style.left + ", Y: " + el.style.top);
@@ -35,11 +37,11 @@ function onPointerLeave(evt) {
 
 function onPointerMove(evt) {
   let el = getOrCreate(evt);
-
+  
   // Position the element from its middle
   let rect = el.getBoundingClientRect();
-  el.style.left = (evt.clientX - rect.width / 2) + "px";
-  el.style.top = (evt.clientY - rect.height / 2) + "px";
+   el.style.left = (evt.clientX - rect.width / 2) + "px";
+   el.style.top = (evt.clientY - rect.height / 2) + "px";
 }
 
 // Returns an existing element for a pointer id, or makes a new one
