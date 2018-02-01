@@ -1,6 +1,10 @@
 var socket = null;
 var frozen = false;
 
+var trigger1 = false;
+var trigger2 = false;
+var unlocked = false;
+
 if (document.readyState != 'loading') ready();
 else document.addEventListener('DOMContentLoaded', ready);
 
@@ -10,7 +14,6 @@ function ready() {
     frozen = !frozen;
     document.getElementById('last').classList.toggle('frozen');
   });
-  
     
   initWebsocket();
 }
@@ -19,8 +22,23 @@ function onData(e) {
   var accel = e.accel;
   var accelGrav = e.accelGrav;
   var rot = e.rot;
+  var rotMotion = e.rotMotion;
+
+  if(!trigger1 && rot.gamma < -80){
+    trigger1 = true;
+  }
+
+  if(trigger1 && accel.y > 8){
+    trigger2 = true;
+  }
+
+  if(trigger2 && accel.y < 1 && rotMotion.beta > 5){
+    unlocked = true;
+    document.body.style.backgroundColor = "lightgreen";
+  }
+
+  console.log("trigger1: " + trigger1 + ", trigger2: " + trigger2 + ", unlocked: " + unlocked);
   
-  console.log(rot.alpha);
   if (!frozen) showData(e);
 }
 
