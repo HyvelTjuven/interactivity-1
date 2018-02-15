@@ -1,3 +1,6 @@
+var downTrigger = false;
+var moveTrigger = false;
+
 function onDocumentReady() {
   let el = document.body;
 
@@ -8,20 +11,27 @@ function onDocumentReady() {
 }
 
 function onPointerUp(evt) {
-  let el = getOrCreate(evt);
-  el.classList.remove("down");
-  console.log(el.id + " up, " + "X: " + el.style.left + ", Y: " + el.style.top);
+  downTrigger = false;
+  moveTrigger = false;
+  console.log(downTrigger);
+  
+  // let el = getOrCreate(evt);
+  // el.classList.remove("down");
+  // console.log(el.id + " up, " + "X: " + el.style.left + ", Y: " + el.style.top);
 }
 
 function onPointerDown(evt) {
-  let el = getOrCreate(evt);
-  el.classList.add("down");
+  downTrigger = true;
+  console.log(downTrigger);
+  
+  // let el = getOrCreate(evt);
+  // el.classList.add("down");
 
-  // Position the element from its middle
-  let rect = el.getBoundingClientRect();
-  el.style.left = (evt.clientX - rect.width / 2) + "px";
-  el.style.top = (evt.clientY - rect.height / 2) + "px";
-  console.log(rect);
+  // // Position the element from its middle
+  // let rect = el.getBoundingClientRect();
+  // el.style.left = (evt.clientX - rect.width / 2) + "px";
+  // el.style.top = (evt.clientY - rect.height / 2) + "px";
+  // console.log(rect);
   
 
   // Log ID and location of pointer
@@ -29,19 +39,25 @@ function onPointerDown(evt) {
 }
 
 function onPointerLeave(evt) {
-  let el = getOrCreate(evt);
-  document.body.removeChild(el);
-  // Log ID and location of pointer
-  console.log(el.id + " left, " + "X: " + el.style.left + ", Y: " + el.style.top);
+  downTrigger = false;
+  moveTrigger = false;
+  // let el = getOrCreate(evt);
+  // document.body.removeChild(el);
+  // // Log ID and location of pointer
+  // console.log(el.id + " left, " + "X: " + el.style.left + ", Y: " + el.style.top);
 }
 
 function onPointerMove(evt) {
+  moveTrigger = true;
+
+  if (downTrigger === true && moveTrigger === true){
   let el = getOrCreate(evt);
   
   // Position the element from its middle
   let rect = el.getBoundingClientRect();
    el.style.left = (evt.clientX - rect.width / 2) + "px";
    el.style.top = (evt.clientY - rect.height / 2) + "px";
+  }
 }
 
 // Returns an existing element for a pointer id, or makes a new one
@@ -57,7 +73,7 @@ function getOrCreate(evt) {
   } else {
     el = document.createElement('div');
     el.classList.add('pointer');
-    el.id = id;
+    //el.id = id;
     document.body.appendChild(el);
     return el;
   }

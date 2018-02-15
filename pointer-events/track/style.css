@@ -19,8 +19,8 @@ body {
 .pointer {
   background-color: #69d3c4;
   position: absolute;
-  width: 25vw;
-  height: 25vw;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   opacity: 1.0; 
 }

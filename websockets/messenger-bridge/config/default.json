@@ -1,6 +1,6 @@
 {
-  "appSecret": "APP_SECRET",
-  "pageAccessToken": "PAGE_ACCESS_TOKEN",
+  "appSecret": "15489b0dbf4d8ae58d8b0adc82c52405",
+  "pageAccessToken": "EAAXHmbbIhY4BAFpndNbWPTjmZCYrnRNgXJA8zoZAgHy26mSEIHJZBhd7M5ztE6iMZCLkdXpWZBHfheeNsB3PZBMTZBEgHDuLv9YsDaZChjA075MvcJ8aPFNc3w2iM2MEz5kmP80PhsJZAVtZCDdczDYmgJ0vw4ba42ymxq4N5kHQaM1wZDZD",
   "validationToken": "SOMETHING_RANDOM",
-  "serverURL": "https://YOURNGROKID.ngrok.io/webhook"
+  "serverURL": "https://6983dd6e.ngrok.io/webhook"
 }
